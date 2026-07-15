@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TAEC — Hệ Thống Ngoại Ngữ Tuấn Anh | Đăng Ký Tư Vấn TOEIC - IELTS - Giao Tiếp</title>
+<meta name="description" content="Hệ Thống Ngoại Ngữ TAEC — luyện thi TOEIC, IELTS, VSTEP, PTE và tiếng Anh giao tiếp, cam kết đầu ra. 5 cơ sở tại TP.HCM và học Online.">
+<style>
+  :root{
+    --brand: #b2202e;
+    --brand-dark: #7a1620;
+    --brand-darker: #5c1018;
+    --accent: #c8863c;
+    --text: #2b2b2b;
+    --muted: #6b6b6b;
+    --bg: #fff8f6;
+    --card-border: #eee0dc;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{font-family:'Segoe UI',-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif;color:var(--text);background:var(--bg);line-height:1.6;}
+  a{text-decoration:none;color:inherit;}
+  ul{list-style:none;}
+  section{padding:80px 24px;}
+  .container{max-width:1140px;margin:0 auto;}
+  h1,h2,h3{line-height:1.25;}
+  [id]{scroll-margin-top:90px;}
+
+  /* Header */
+  header{position:sticky;top:0;z-index:100;background:var(--brand-dark);box-shadow:0 2px 12px rgba(0,0,0,.15);}
+  .header-inner{max-width:1140px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:14px 24px;}
+  .logo{display:flex;flex-direction:column;color:#fff;font-weight:800;font-size:22px;letter-spacing:1px;}
+  .logo span{font-size:11px;font-weight:600;letter-spacing:2px;color:#f0c9c9;}
+  nav ul{display:flex;gap:32px;}
+  nav a{color:#fff;font-weight:600;font-size:15px;opacity:.9;transition:opacity .2s;}
+  nav a:hover{opacity:1;}
+  .menu-toggle{display:none;background:none;border:none;color:#fff;font-size:26px;cursor:pointer;}
+
+  /* Hero */
+  .hero{position:relative;background:linear-gradient(135deg, var(--brand) 0%, var(--brand-dark) 60%, var(--brand-darker) 100%);color:#fff;padding:64px 24px 110px;overflow:hidden;}
+  .hero::after{content:"";position:absolute;left:0;right:0;bottom:0;height:60px;background:var(--bg);clip-path:polygon(0 100%, 100% 100%, 100% 40%, 0 100%);}
+  .hero-inner{max-width:1140px;margin:0 auto;display:grid;grid-template-columns:1.1fr 1fr;gap:56px;align-items:start;padding-top:48px;position:relative;z-index:2;}
+  .hero-copy{display:flex;flex-direction:column;align-items:flex-start;}
+  .pill{display:inline-block;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.35);padding:6px 16px;border-radius:30px;font-size:13px;font-weight:600;margin-bottom:20px;letter-spacing:.5px;}
+  .hero h1{font-size:40px;font-weight:800;margin-bottom:18px;}
+  .hero p.lead{font-size:17px;color:#f6dede;margin-bottom:28px;max-width:520px;}
+  .hero .actions{display:flex;gap:14px;flex-wrap:wrap;}
+  .hero .hero-copy .actions{justify-content:flex-start;}
+  .btn{display:inline-block;padding:14px 28px;border-radius:8px;font-weight:700;font-size:15px;cursor:pointer;border:2px solid transparent;transition:transform .15s, background .2s;}
+  .btn:hover{transform:translateY(-2px);}
+  .btn-white{background:#fff;color:var(--brand-dark);}
+  .btn-ghost{background:transparent;color:#fff;border-color:rgba(255,255,255,.6);}
+
+  /* Form card */
+  .form-card{background:#fff;color:var(--text);border-radius:16px;padding:32px;box-shadow:0 20px 50px rgba(0,0,0,.25);}
+  .form-card h3{color:var(--brand-dark);font-size:22px;margin-bottom:6px;}
+  .form-card .sub{color:var(--muted);font-size:14px;margin-bottom:20px;}
+  .field{margin-bottom:14px;}
+  .field label{display:block;font-size:13px;font-weight:700;margin-bottom:6px;color:var(--text);}
+  .field input, .field select, .field textarea{width:100%;padding:11px 12px;border:1.5px solid #e2d5d1;border-radius:8px;font-size:14px;font-family:inherit;background:#fffdfc;}
+  .field input:focus, .field select:focus, .field textarea:focus{outline:none;border-color:var(--brand);}
+  .checkbox-row{display:flex;align-items:flex-start;gap:8px;font-size:12.5px;color:var(--muted);margin:14px 0;}
+  .checkbox-row input{margin-top:3px;}
+  .submit-btn{width:100%;background:var(--brand);color:#fff;border:none;padding:14px;border-radius:8px;font-weight:700;font-size:15px;cursor:pointer;transition:background .2s;}
+  .submit-btn:hover{background:var(--brand-dark);}
+  .honeypot{position:absolute;left:-9999px;opacity:0;height:0;}
+  .thanks{display:none;text-align:center;padding:20px 0;}
+  .thanks h3{color:var(--brand-dark);margin-bottom:10px;}
+  .thanks a{color:var(--brand);font-weight:700;}
+  .form-error{display:none;color:#b2202e;font-size:13px;margin-top:10px;text-align:center;}
+
+  /* Courses */
+  #khoa-hoc{background:var(--bg);}
+  .section-title{text-align:center;margin-bottom:12px;font-size:32px;font-weight:800;color:var(--brand-dark);}
+  .section-sub{text-align:center;color:var(--muted);margin-bottom:48px;max-width:640px;margin-left:auto;margin-right:auto;}
+  .course-grid{display:grid;grid-template-columns:repeat(auto-fit, minmax(260px,1fr));gap:24px;}
+  .course-card{background:#fff;border:1px solid var(--card-border);border-top:4px solid var(--accent);border-radius:12px;padding:26px 22px;box-shadow:0 4px 14px rgba(0,0,0,.04);transition:transform .2s, box-shadow .2s;}
+  .course-card:hover{transform:translateY(-4px);box-shadow:0 12px 24px rgba(0,0,0,.08);}
+  .course-card h3{font-size:19px;color:var(--brand-dark);margin-bottom:10px;}
+  .course-card p{font-size:14px;color:var(--muted);margin-bottom:16px;min-height:66px;}
+  .goal-pill{display:inline-block;background:#fbeee2;color:var(--accent);font-weight:700;font-size:12.5px;padding:6px 14px;border-radius:20px;}
+
+  /* Diem khac biet */
+  #noi-bat{background:#fff;}
+  .diff-grid{display:grid;grid-template-columns:repeat(auto-fit, minmax(240px,1fr));gap:24px;}
+  .diff-card{text-align:center;padding:30px 20px;border-radius:12px;background:var(--bg);border:1px solid var(--card-border);}
+  .diff-card .icon{font-size:36px;margin-bottom:14px;}
+  .diff-card h3{font-size:16px;margin-bottom:8px;color:var(--brand-dark);}
+  .diff-card p{font-size:13.5px;color:var(--muted);}
+
+  /* Partner strip */
+  .partner-strip{background:#fff;padding:56px 24px;border-top:1px solid var(--card-border);border-bottom:1px solid var(--card-border);}
+  .partner-inner{max-width:900px;margin:0 auto;text-align:center;}
+  .partner-label{font-size:12.5px;font-weight:800;letter-spacing:2px;color:var(--muted);margin-bottom:20px;}
+  .partner-logos{display:flex;align-items:center;justify-content:center;gap:24px;flex-wrap:wrap;margin-bottom:18px;}
+  .partner-badge{width:56px;height:56px;border-radius:50%;background:var(--brand);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:18px;}
+  .partner-x{font-size:22px;color:var(--muted);font-weight:300;}
+  .affluence-word{font-size:26px;font-weight:800;background:linear-gradient(90deg,#4f46e5,#9333ea);-webkit-background-clip:text;background-clip:text;color:transparent;}
+  .partner-inner p{color:var(--muted);font-size:14.5px;max-width:640px;margin:0 auto;}
+  .partner-inner a{color:var(--brand);font-weight:700;}
+
+  /* Footer */
+  footer{background:var(--brand-darker);color:#f3dede;padding:56px 24px 24px;}
+  .footer-inner{max-width:1140px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:36px;margin-bottom:36px;}
+  footer h4{color:#fff;font-size:16px;margin-bottom:14px;}
+  footer p, footer li{font-size:13.5px;color:#e6c6c6;margin-bottom:8px;}
+  footer a{color:#f7d9d9;font-weight:600;}
+  .copyright{border-top:1px solid rgba(255,255,255,.15);padding-top:20px;text-align:center;font-size:12.5px;color:#d9a9a9;max-width:1140px;margin:0 auto;}
+
+  /* Zalo float */
+  .zalo-float{position:fixed;right:22px;bottom:22px;z-index:200;display:flex;align-items:center;gap:10px;background:#0068ff;color:#fff;padding:14px 20px 14px 14px;border-radius:32px;box-shadow:0 8px 24px rgba(0,104,255,.4);font-weight:700;font-size:14px;}
+  .zalo-float .ring{position:absolute;inset:0;border-radius:50%;}
+  .zalo-circle{position:relative;width:32px;height:32px;border-radius:50%;background:#fff;color:#0068ff;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:11px;flex-shrink:0;}
+  .zalo-circle::before{content:"";position:absolute;inset:-6px;border-radius:50%;border:2px solid #fff;opacity:.6;animation:pulse 1.6s infinite;}
+  @keyframes pulse{0%{transform:scale(1);opacity:.6;}100%{transform:scale(1.6);opacity:0;}}
+
+  @media (max-width: 900px){
+    nav{position:fixed;top:64px;left:0;right:0;background:var(--brand-dark);flex-direction:column;padding:10px 24px 20px;display:none;}
+    nav.open{display:block;}
+    nav ul{flex-direction:column;gap:0;}
+    nav li{border-top:1px solid rgba(255,255,255,.12);}
+    nav a{display:block;padding:14px 0;}
+    .menu-toggle{display:block;}
+    .hero-inner{grid-template-columns:1fr;padding-top:20px;}
+    .hero-copy{align-items:center;text-align:center;}
+    .hero .hero-copy .actions{justify-content:center;}
+    .hero h1{font-size:30px;}
+    .zalo-float span.label{display:none;}
+    .zalo-float{padding:14px;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="logo">TAEC<span>LEARN · GROW · SUCCEED</span></div>
+    <button class="menu-toggle" id="menuToggle">☰</button>
+    <nav id="mainNav">
+      <ul>
+        <li><a href="#khoa-hoc">Khóa học</a></li>
+        <li><a href="#noi-bat">Nổi bật</a></li>
+        <li><a href="#dang-ky">Đăng ký</a></li>
+        <li><a href="#lien-he">Liên hệ</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-copy">
+      <span class="pill">HỆ THỐNG NGOẠI NGỮ TAEC · 10+ NĂM ĐỒNG HÀNH</span>
+      <h1>Chinh phục TOEIC – IELTS – VSTEP<br>cùng TAEC, cam kết đầu ra</h1>
+      <p class="lead">Hơn 200.000 học viên đã tin tưởng Hệ thống Ngoại ngữ Tuấn Anh (TAEC). 5 cơ sở tại TP.HCM (Bình Thạnh, Quận 7, Gò Vấp, Tân Bình) và lớp học Online qua Zoom — giáo trình độc quyền, đội ngũ giảng viên giàu kinh nghiệm, ưu đãi học phí lên đến 50%.</p>
+      <div class="actions">
+        <a href="#dang-ky" class="btn btn-white">Đăng ký tư vấn miễn phí</a>
+        <a href="#khoa-hoc" class="btn btn-ghost">Xem khóa học</a>
+      </div>
+    </div>
+
+    <div class="form-card" id="dang-ky">
+      <h3>Đăng ký khóa học</h3>
+      <p class="sub">TAEC sẽ liên hệ qua Email hoặc Zalo.</p>
+
+      <form id="regForm">
+        <input type="text" name="_honey" class="honeypot" tabindex="-1" autocomplete="off">
+
+        <div class="field">
+          <label>Họ và tên *</label>
+          <input type="text" name="ho_ten" required>
+        </div>
+        <div class="field">
+          <label>Số điện thoại / Zalo *</label>
+          <input type="tel" name="dien_thoai" pattern="[0-9+ ]{9,13}" required>
+        </div>
+        <div class="field">
+          <label>Email</label>
+          <input type="email" name="email">
+        </div>
+        <div class="field">
+          <label>Khóa học quan tâm *</label>
+          <select name="khoa_hoc" required>
+            <option value="">-- Chọn khóa học --</option>
+            <option>TOEIC 4 Skills</option>
+            <option>TOEIC Listening & Reading</option>
+            <option>IELTS Success</option>
+            <option>Global Speak (Giao tiếp quốc tế)</option>
+            <option>Global Teens</option>
+            <option>VSTEP</option>
+            <option>PTE Academic & PTE Core</option>
+            <option>Chưa rõ — cần tư vấn</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Cơ sở học mong muốn</label>
+          <select name="lich_hoc">
+            <option value="">-- Chọn cơ sở --</option>
+            <option>TAEC Bình Thạnh</option>
+            <option>TAEC Quận 7</option>
+            <option>TAEC Gò Vấp</option>
+            <option>TAEC Tân Bình</option>
+            <option>Học Online</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Lời nhắn</label>
+          <textarea name="loi_nhan" rows="2"></textarea>
+        </div>
+
+        <label class="checkbox-row">
+          <input type="checkbox" required>
+          <span>Tôi đồng ý để TAEC liên hệ tư vấn qua Email/Zalo/Điện thoại theo thông tin đã cung cấp.</span>
+        </label>
+
+        <button type="submit" class="submit-btn">Gửi đăng ký</button>
+        <div class="form-error" id="formError">Có lỗi xảy ra, vui lòng nhắn Zalo Ms. Uyên: <a href="https://zalo.me/0869688153" target="_blank">0869 688 153</a></div>
+      </form>
+
+      <div class="thanks" id="thanksBox">
+        <h3>Cảm ơn bạn đã đăng ký!</h3>
+        <p>TAEC sẽ liên hệ lại trong thời gian sớm nhất. Cần tư vấn ngay?<br>
+        <a href="https://zalo.me/0869688153" target="_blank">Nhắn Zalo Ms. Uyên</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="khoa-hoc">
+  <div class="container">
+    <h2 class="section-title">Khóa Học Tại TAEC</h2>
+    <p class="section-sub">Lộ trình luyện thi & giao tiếp được thiết kế theo giáo trình độc quyền, cam kết đầu ra rõ ràng cho từng học viên.</p>
+    <div class="course-grid">
+      <div class="course-card">
+        <h3>TOEIC 4 Skills</h3>
+        <p>Luyện đầy đủ 4 kỹ năng Nghe – Nói – Đọc – Viết theo cấu trúc bài thi TOEIC, phù hợp yêu cầu tốt nghiệp và tuyển dụng doanh nghiệp.</p>
+        <span class="goal-pill">Đầu ra 450 – 900+</span>
+      </div>
+      <div class="course-card">
+        <h3>TOEIC Listening & Reading</h3>
+        <p>Tập trung 2 kỹ năng Nghe – Đọc phổ biến nhất, giải đề theo từng dạng câu hỏi, cam kết đúng lộ trình điểm số.</p>
+        <span class="goal-pill">Đầu ra 450 – 900+</span>
+      </div>
+      <div class="course-card">
+        <h3>IELTS Success</h3>
+        <p>Lộ trình cá nhân hóa từ mất gốc đến IELTS 6.0+, luyện đủ Listening – Reading – Writing – Speaking cùng giảng viên giàu kinh nghiệm.</p>
+        <span class="goal-pill">Đầu ra 5.5 – 6.5+</span>
+      </div>
+      <div class="course-card">
+        <h3>Global Speak</h3>
+        <p>Tiếng Anh giao tiếp quốc tế, xây phản xạ nghe – nói tự nhiên, tự tin giao tiếp trong môi trường làm việc hội nhập.</p>
+        <span class="goal-pill">Giao tiếp tự tin 3–6 tháng</span>
+      </div>
+      <div class="course-card">
+        <h3>Global Teens</h3>
+        <p>Chương trình tiếng Anh giao tiếp dành riêng cho học sinh, xây nền tảng phát âm – từ vựng – phản xạ ngay từ nhỏ.</p>
+        <span class="goal-pill">Nền tảng vững chắc</span>
+      </div>
+      <div class="course-card">
+        <h3>VSTEP</h3>
+        <p>Luyện thi chứng chỉ VSTEP quốc gia, phục vụ chuẩn đầu ra đại học, cao học và thi công chức, viên chức.</p>
+        <span class="goal-pill">Bậc 3 – Bậc 5</span>
+      </div>
+      <div class="course-card">
+        <h3>PTE Academic & PTE Core</h3>
+        <p>Luyện thi chứng chỉ PTE phục vụ du học, định cư và xét tuyển học thuật, làm quen cấu trúc thi trên máy tính.</p>
+        <span class="goal-pill">Đầu ra theo mục tiêu</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="noi-bat">
+  <div class="container">
+    <h2 class="section-title">Vì Sao Chọn TAEC?</h2>
+    <p class="section-sub">Một sự lựa chọn tạo nên sự khác biệt.</p>
+    <div class="diff-grid">
+      <div class="diff-card">
+        <div class="icon">🎓</div>
+        <h3>Kinh nghiệm giảng viên</h3>
+        <p>Đội ngũ giảng viên tận tâm, giàu kinh nghiệm và vững kiến thức chuyên môn.</p>
+      </div>
+      <div class="diff-card">
+        <div class="icon">📈</div>
+        <h3>Phương pháp học hiệu quả</h3>
+        <p>Chương trình học linh hoạt, thiết kế riêng theo nhu cầu và mục tiêu từng học viên.</p>
+      </div>
+      <div class="diff-card">
+        <div class="icon">🏫</div>
+        <h3>Môi trường chuyên nghiệp</h3>
+        <p>Không gian học tương tác, khích lệ học viên tự tin giao tiếp và phát triển tự nhiên.</p>
+      </div>
+      <div class="diff-card">
+        <div class="icon">💬</div>
+        <h3>Đội ngũ tư vấn 24/7</h3>
+        <p>Luôn sẵn sàng giải đáp thắc mắc, đồng hành cùng học viên xuyên suốt quá trình học.</p>
+      </div>
+      <div class="diff-card">
+        <div class="icon">✅</div>
+        <h3>Cam kết chất lượng đầu ra</h3>
+        <p>Đảm bảo chất lượng khóa học với cam kết đầu ra cụ thể cho từng học viên.</p>
+      </div>
+      <div class="diff-card">
+        <div class="icon">🎁</div>
+        <h3>Ưu đãi học phí hấp dẫn</h3>
+        <p>Thường xuyên có chương trình khuyến mãi, ưu đãi học phí lên đến 50%.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="partner-strip">
+  <div class="partner-inner">
+    <div class="partner-label">ĐỐI TÁC CHIẾN LƯỢC</div>
+    <div class="partner-logos">
+      <div class="partner-badge">TAEC</div>
+      <span class="partner-x">✕</span>
+      <span class="affluence-word">Affluence</span>
+    </div>
+    <p>TAEC hợp tác cùng Affluence — nền tảng kết nối trường học &amp; mạng lưới marketers, giúp lan tỏa các khóa học chất lượng đến đúng học viên. Tìm hiểu thêm tại <a href="https://affluence.vn" target="_blank">affluence.vn</a>.</p>
+  </div>
+</div>
+
+<footer id="lien-he">
+  <div class="footer-inner">
+    <div>
+      <h4>Hệ Thống Ngoại Ngữ TAEC</h4>
+      <p>Trung tâm Anh ngữ Tuấn Anh</p>
+      <p>TAEC Bình Thạnh: 49G Phan Đăng Lưu, Phường 1, Quận Bình Thạnh</p>
+      <p>TAEC Quận 7: 20 đường số 43, Phường Bình Thuận, Quận 7</p>
+      <p>TAEC Gò Vấp: 33 Đ. số 7, Cityland Center Hills, Phường 7, Quận Gò Vấp</p>
+      <p>TAEC Tân Bình: Tầng 2, MindX Trường Chinh, Số 1 đường Trường Chinh</p>
+      <p>Học Online qua Zoom — tương tác trực tiếp với giáo viên</p>
+    </div>
+    <div>
+      <h4>Liên hệ</h4>
+      <p><a href="https://zalo.me/0869688153" target="_blank">💬 Zalo Ms. Uyên — 0869 688 153</a></p>
+    </div>
+    <div>
+      <h4>Về TAEC</h4>
+      <p>Hơn 10 năm hoạt động trong lĩnh vực đào tạo tiếng Anh</p>
+      <p>Hơn 200.000 học viên đã theo học</p>
+      <p>5 cơ sở tại TP.HCM + lớp học Online</p>
+    </div>
+  </div>
+  <div class="copyright">
+    © 2026 Hệ Thống Ngoại Ngữ TAEC (Trung tâm Anh ngữ Tuấn Anh). Trang đăng ký được vận hành bởi Affluence.
+  </div>
+</footer>
+
+<a href="https://zalo.me/0869688153" target="_blank" class="zalo-float">
+  <span class="zalo-circle">Zalo</span>
+  <span class="label">💬 Nhắn Zalo Ms. Uyên</span>
+</a>
+
+<script>
+  document.getElementById('menuToggle').addEventListener('click', function(){
+    document.getElementById('mainNav').classList.toggle('open');
+  });
+  document.querySelectorAll('#mainNav a').forEach(a=>{
+    a.addEventListener('click', ()=>document.getElementById('mainNav').classList.remove('open'));
+  });
+
+  var GFORM = {
+    action: 'https://docs.google.com/forms/d/e/1FAIpQLSe1nTASPlGs2Bc1NE7Fln_KCKeq-qaodTDPjVIVNVKhHVZC4Q/formResponse',
+    map: {
+      ho_ten: 'entry.1742911628',
+      dien_thoai: 'entry.929169518',
+      email: 'entry.1546816917',
+      khoa_hoc: 'entry.1993300379',
+      lich_hoc: 'entry.1100827217',
+      loi_nhan: 'entry.1967013166'
+    }
+  };
+
+  document.getElementById('regForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    var form = e.target;
+    if (form._honey.value) return;
+
+    var fd = new FormData();
+    Object.keys(GFORM.map).forEach(function(key){
+      fd.append(GFORM.map[key], form[key].value);
+    });
+
+    fetch(GFORM.action, { method: 'POST', mode: 'no-cors', body: fd })
+      .then(function(){
+        form.style.display = 'none';
+        document.getElementById('thanksBox').style.display = 'block';
+      })
+      .catch(function(){
+        document.getElementById('formError').style.display = 'block';
+      });
+  });
+</script>
+
+</body>
+</html>
