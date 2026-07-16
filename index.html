@@ -147,6 +147,15 @@
     .zalo-float{padding:14px;}
   }
 </style>
+
+<!-- Google Analytics — chung cho mọi landing page affluence.vn -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-PGTR9CTWS2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-PGTR9CTWS2');
+</script>
 </head>
 <body>
 
@@ -420,7 +429,7 @@
 
   var CLIENT = 'taec';
   var GFORM = {
-    action: 'https://script.google.com/macros/s/AKfycbzGsRtSIzAHBPjuWWGrtaoNoChTBQm57FolpeP4jTMVaZ9IHPx8LEurANO2TolaIEvW/exec',
+    action: 'https://script.google.com/macros/s/AKfycbwucHt7mWkNfYB-x6ulnBSe0Utbk-2DGyGvruMgGvr8ljGmzHFPC17B6ozChYUjr1i0/exec',
     map: {
       ho_ten: 'entry.1742911628',
       dien_thoai: 'entry.929169518',
@@ -436,20 +445,43 @@
     var form = e.target;
     if (form._honey.value) return;
 
+    var leadId = 'LD-' + Math.random().toString(36).slice(2, 10);
     var fd = new URLSearchParams();
     fd.append('client', CLIENT);
     Object.keys(GFORM.map).forEach(function(key){
       fd.append(key, form[key].value);
     });
 
+    fd.append('lead_id', leadId);
     // Gửi nền (keepalive) — phản hồi là opaque (no-cors) nên không cần chờ; hiện lời cảm ơn ngay.
     fetch(GFORM.action, { method: 'POST', mode: 'no-cors', body: fd, keepalive: true })
       .catch(function(){
         document.getElementById('formError').style.display = 'block';
       });
+    gtag('event', 'generate_lead', {
+      course: fd.get('khoa_hoc') || '',
+      khu_vuc: fd.get('khu_vuc') || fd.get('chi_nhanh') || '',
+      lead_id: leadId
+    });
     form.style.display = 'none';
     document.getElementById('thanksBox').style.display = 'block';
   });
+
+  // ---- GA event hooks ----
+  (function () {
+    var regForm = document.getElementById('regForm');
+    if (regForm) {
+      var started = false;
+      regForm.addEventListener('focusin', function () {
+        if (!started) { started = true; gtag('event', 'form_start', { form_id: 'regForm' }); }
+      });
+    }
+    document.querySelectorAll('a[href*="zalo.me"]').forEach(function (a) {
+      a.addEventListener('click', function () {
+        gtag('event', 'zalo_click', { placement: a.className || 'link' });
+      });
+    });
+  })();
 </script>
 
 </body>
