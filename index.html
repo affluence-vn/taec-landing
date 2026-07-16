@@ -418,8 +418,9 @@
     a.addEventListener('click', ()=>document.getElementById('mainNav').classList.remove('open'));
   });
 
+  var CLIENT = 'taec';
   var GFORM = {
-    action: 'https://docs.google.com/forms/d/e/1FAIpQLSe1nTASPlGs2Bc1NE7Fln_KCKeq-qaodTDPjVIVNVKhHVZC4Q/formResponse',
+    action: 'https://script.google.com/macros/s/AKfycbzGsRtSIzAHBPjuWWGrtaoNoChTBQm57FolpeP4jTMVaZ9IHPx8LEurANO2TolaIEvW/exec',
     map: {
       ho_ten: 'entry.1742911628',
       dien_thoai: 'entry.929169518',
@@ -435,9 +436,10 @@
     var form = e.target;
     if (form._honey.value) return;
 
-    var fd = new FormData();
+    var fd = new URLSearchParams();
+    fd.append('client', CLIENT);
     Object.keys(GFORM.map).forEach(function(key){
-      fd.append(GFORM.map[key], form[key].value);
+      fd.append(key, form[key].value);
     });
 
     fetch(GFORM.action, { method: 'POST', mode: 'no-cors', body: fd })
