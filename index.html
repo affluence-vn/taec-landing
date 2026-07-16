@@ -442,14 +442,13 @@
       fd.append(key, form[key].value);
     });
 
-    fetch(GFORM.action, { method: 'POST', mode: 'no-cors', body: fd })
-      .then(function(){
-        form.style.display = 'none';
-        document.getElementById('thanksBox').style.display = 'block';
-      })
+    // Gửi nền (keepalive) — phản hồi là opaque (no-cors) nên không cần chờ; hiện lời cảm ơn ngay.
+    fetch(GFORM.action, { method: 'POST', mode: 'no-cors', body: fd, keepalive: true })
       .catch(function(){
         document.getElementById('formError').style.display = 'block';
       });
+    form.style.display = 'none';
+    document.getElementById('thanksBox').style.display = 'block';
   });
 </script>
 
